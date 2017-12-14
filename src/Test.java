@@ -29,23 +29,24 @@ public class Test {
     }
 
     public static boolean isNumberSimple(int N) {
-        if (N < 2) return false;
-        for (int i = 2; i * i <= N; i++)
+        for (int i = 2; i < N; i++) {
             if (N % i == 0) return false;
+        }
         return true;
     }
 
     public static void sumAndCheck(List array1, List array2) {
+        int f = 0;
         for (int i = 0; i < array1.size(); i++) {
             for (int j = 0; j < array2.size(); j++) {
                 int num = ((int) array1.get(i)) + ((int) array2.get(j));
                 if (palindrome(Integer.toString(num))) {
-                    System.out.println("Число 1 = " + array1.get(i));
-                    System.out.println("Число 2 = " + array2.get(j));
-                    System.out.println("Palindrom = " + num);
-                    return;
+                    if (num > f){
+                        f = num;
+                    }
                 }
             }
         }
+        System.out.println(f);
     }
 }
